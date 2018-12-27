@@ -1,13 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="B4.EE.DeBisschopS.Pages.OrderPage">
+             x:Class="B4.EE.DeBisschopS.Pages.OrderPage"
+             x:Name="ContentPage">
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding ItemList}">
+            <ListView ItemsSource="{Binding ItemList}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding Cost}"></TextCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Text="{Binding Name}" />
+                                    <Label Grid.Column="1" Text="{Binding Count}" />
+
+                                    <Button Text="+" Grid.Column="2" Command="{Binding Path=BindingContext.RaiseItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}"  />
+                                    <Button Text="-" Grid.Column="3" Command="{Binding Path=BindingContext.LowerItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

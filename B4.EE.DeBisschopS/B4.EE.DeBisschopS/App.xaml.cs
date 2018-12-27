@@ -14,9 +14,7 @@ namespace B4.EE.DeBisschopS
         {
             InitializeComponent();
 
-            //MainPage = new NavigationPage(new OrderPage());
-
-            MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<OrderPageModel>());
+            MainPage = new NavigationPage(new OrderPage());
         }
 
         protected override void OnStart()

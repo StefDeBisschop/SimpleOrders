@@ -1,4 +1,7 @@
 ﻿using System;
+using B4.EE.DeBisschopS.PageModels;
+using B4.EE.DeBisschopS.Pages;
+using FreshMvvm;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +14,9 @@ namespace B4.EE.DeBisschopS
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //MainPage = new NavigationPage(new OrderPage());
+
+            MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<OrderPageModel>());
         }
 
         protected override void OnStart()

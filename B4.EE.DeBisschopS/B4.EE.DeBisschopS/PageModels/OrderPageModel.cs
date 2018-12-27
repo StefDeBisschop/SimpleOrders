@@ -36,21 +36,39 @@ namespace B4.EE.DeBisschopS.PageModels
         {
             ItemList = new ObservableCollection<Item>
             {
-                new Item {Cost = 12, Name = "TestItem"}
+                new Item {Cost = 12, Name = "TestItem"},
+                new Item {Cost = 10, Name = "TestItem2"}
             };
 
-            RaiseItem = new Command((obj) => {
+            RaiseItem = new Command((obj) =>
+            {
                 Item item = (Item)obj;
                 ObservableCollection<Item> listCopy = new ObservableCollection<Item>(ItemList);
-                listCopy.FirstOrDefault(_item => _item.Id == item.Id).Count++;
-                ItemList = listCopy;
+                try
+                {
+                    listCopy.FirstOrDefault(_item => _item.Id == item.Id).Count++;
+                    ItemList = listCopy;
+                }
+                catch { }
+
             });
 
-            RaiseItem = new Command((obj) => {
+            LowerItem = new Command((obj) =>
+            {
                 Item item = (Item)obj;
                 ObservableCollection<Item> listCopy = new ObservableCollection<Item>(ItemList);
-                listCopy.FirstOrDefault(_item => _item.Id == item.Id).Count--;
-                ItemList = listCopy;
+                try
+                {
+                    Item itemFound = listCopy.FirstOrDefault(_item => _item.Id == item.Id);
+                    if (itemFound.Count > 0)
+                    {
+                        itemFound.Count--;
+                        ItemList = listCopy;
+                    }
+                }
+                catch { }
+
+
             });
         }
 

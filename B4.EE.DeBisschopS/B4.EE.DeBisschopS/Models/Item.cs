@@ -11,5 +11,6 @@ namespace B4.EE.DeBisschopS.Models
         public string Name { get; set; }
         public int Cost { get; set; }
         public int Count { get; set; }
+        public string ImageNameF { get; set; }
     }
 }

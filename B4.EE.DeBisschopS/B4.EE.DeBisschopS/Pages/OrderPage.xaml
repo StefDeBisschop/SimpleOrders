@@ -25,7 +25,7 @@
                                                 <RowDefinition Height="*"></RowDefinition>
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
-                                            <Image Grid.Row="0" Source="apple.png" HeightRequest="70"></Image>
+                                            <Image Grid.Row="0" Source="{Binding ImageNameF}" HeightRequest="70"></Image>
                                             <Label Grid.Row="1" Text="{Binding Name}" HorizontalTextAlignment="End" />
 
                                         </Grid>
@@ -42,6 +42,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+
+                <Label FontSize="60" Grid.Column="0" TextColor="DarkOrange" Text="Total" FontAttributes="Bold"></Label>
+                <Label FontSize="60" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Grid.Column="1" TextColor="DarkOrange" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

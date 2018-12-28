@@ -5,7 +5,7 @@
              x:Name="ContentPage">
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding ItemList}" >
+            <ListView ItemsSource="{Binding ItemList}" RowHeight="85" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -18,11 +18,24 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <Label Grid.Column="0" Text="{Binding Name}" />
-                                    <Label Grid.Column="1" Text="{Binding Count}" />
 
-                                    <Button Text="+" Grid.Column="2" Command="{Binding Path=BindingContext.RaiseItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}"  />
-                                    <Button Text="-" Grid.Column="3" Command="{Binding Path=BindingContext.LowerItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}" />
+                                    <AbsoluteLayout Grid.Column="0">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Image Grid.Row="0" Source="apple.png" HeightRequest="70"></Image>
+                                            <Label Grid.Row="1" Text="{Binding Name}" HorizontalTextAlignment="End" />
+
+                                        </Grid>
+
+                                    </AbsoluteLayout>
+                                    <Label Grid.Column="1" VerticalTextAlignment="Start" Text="{Binding Count}" TextColor="DarkOrange" FontSize="75" FontAttributes="Bold" />
+
+                                    <Button Image="plus.png" Grid.Column="2" Command="{Binding Path=BindingContext.RaiseItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}" BorderColor="Transparent" BackgroundColor="Transparent" />
+                                    <Button Image="minus.png" Grid.Column="3" Command="{Binding Path=BindingContext.LowerItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}" BorderColor="Transparent" BackgroundColor="Transparent" />
+
                                 </Grid>
                             </ViewCell.View>
                         </ViewCell>

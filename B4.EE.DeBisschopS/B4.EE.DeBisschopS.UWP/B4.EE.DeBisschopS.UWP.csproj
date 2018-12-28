@@ -103,6 +103,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apple.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
@@ -130,7 +131,29 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="bread_egg.png" />
+    <Content Include="carrot.png" />
+    <Content Include="cheeseburger.png" />
+    <Content Include="cherries.png" />
+    <Content Include="cookie.png" />
+    <Content Include="donut.png" />
+    <Content Include="french_fries.png" />
+    <Content Include="fried_chicken.png" />
+    <Content Include="grapes.png" />
+    <Content Include="hotdog.png" />
+    <Content Include="ice_cupcake.png" />
+    <Content Include="lemon.png" />
+    <Content Include="macaron_cookies.png" />
+    <Content Include="minus.png" />
+    <Content Include="pear.png" />
+    <Content Include="pizza.png" />
+    <Content Include="plus.png" />
+    <Content Include="popcorn.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="sliced_pizza.png" />
+    <Content Include="soft_ice_cream.png" />
+    <Content Include="strawberry_magnum.png" />
+    <Content Include="vanilla_cupcake.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

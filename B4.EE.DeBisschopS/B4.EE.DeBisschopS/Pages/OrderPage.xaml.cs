@@ -23,5 +23,12 @@ namespace B4.EE.DeBisschopS.Pages
 		    var pageModel = new OrderPageModel(this.Navigation);
             this.BindingContext = pageModel;
         }
+
+	    protected override void OnAppearing()
+	    {
+	        var newPageModel = new OrderPageModel(this.Navigation);
+	        this.BindingContext = newPageModel;
+            base.OnAppearing();
+	    }
 	}
 }

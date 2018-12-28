@@ -9,7 +9,7 @@ namespace B4.EE.DeBisschopS.Storage
 {
     interface IStorage
     {
-        Item AddNewItem(string name, int cost, string imageNameF);
+        Task<Item> AddNewItem(string name, int cost, string imageNameF);
         Task<ObservableCollection<Item>> GetAllItems();
     }
 }

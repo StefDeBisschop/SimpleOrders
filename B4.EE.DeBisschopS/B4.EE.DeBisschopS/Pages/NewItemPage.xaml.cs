@@ -15,8 +15,9 @@ namespace B4.EE.DeBisschopS.Pages
 		public NewItemPage ()
 		{
 		    var pageModel = new NewItemPageModel(this.Navigation);
-		    this.BindingContext = pageModel;
+            this.BindingContext = pageModel;
             InitializeComponent ();
-		}
+		    AllImageNames.ItemsSource = ImageNames.ImageNamesList;
+        }
 	}
 }

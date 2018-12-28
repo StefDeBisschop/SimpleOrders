@@ -1,12 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="B4.EE.DeBisschopS.Pages.NewItemPage">
+             x:Class="B4.EE.DeBisschopS.Pages.NewItemPage"
+             Title="New item">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Name" TextColor="DarkOrange" FontAttributes="Bold" />
+            <Entry Text="{Binding name, Mode=OneWayToSource}" Placeholder="Name of the item"></Entry>
+
+            <Label Text="Cost (currency)" TextColor="DarkOrange" FontAttributes="Bold" />
+            <Entry Keyboard="Numeric" Text="{Binding cost, Mode=OneWayToSource}" Placeholder="Cost of the item"></Entry>
+
+            <Label Text="Icon" TextColor="DarkOrange" FontAttributes="Bold" />
+            <ListView x:Name="AllImageNames" SelectedItem="{Binding imageClicked, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="8">
+                                <Image Source="{Binding}" HeightRequest="55"></Image>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <Button Command="{Binding AddItem}" Text="Save"></Button>
+            </StackLayout>
         </StackLayout>
+
+
     </ContentPage.Content>
 </ContentPage>

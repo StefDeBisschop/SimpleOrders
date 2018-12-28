@@ -16,9 +16,14 @@ namespace B4.EE.DeBisschopS.Storage
         {
         }
 
-        public Item AddNewItem(string name, int cost, string imageNameF)
+        public async Task<Item> AddNewItem(string name, int cost, string imageNameF)
         {
-            throw new NotImplementedException();
+            Item newItem = new Item() { Name = name, Cost = cost, ImageNameF = imageNameF };
+            ObservableCollection<Item> allItems = await GetAllItems();
+            allItems.Add(newItem);
+            string newJson = JsonConvert.SerializeObject(allItems);
+            await WriteTextAllAsync(Constants.ITEMS_LIST_FILENAME, newJson);
+            return newItem;
         }
 
         public async Task<ObservableCollection<Item>> GetAllItems()
@@ -31,11 +36,7 @@ namespace B4.EE.DeBisschopS.Storage
             else
             {
                 await CreateFile(Constants.ITEMS_LIST_FILENAME);
-                return new ObservableCollection<Item>
-                {
-                    new Item {Cost = 12, Name = "TestItem", ImageNameF = "grapes.png"},
-                    new Item {Cost = 10, Name = "TestItem2", ImageNameF = "carrot.png"}
-                };
+                return null;
             }
         }
 
@@ -79,6 +80,14 @@ namespace B4.EE.DeBisschopS.Storage
             IFolder folder = FileSystem.Current.LocalStorage;
             IFile file = await folder.GetFileAsync(Constants.ITEMS_LIST_FILENAME);
             await file.WriteAllTextAsync(content);
+        }
+
+        public async Task<bool> DeleteFile(string fileName)
+        {
+            IFolder folder = FileSystem.Current.LocalStorage;
+            IFile file = await folder.GetFileAsync(fileName);
+            await file.DeleteAsync();
+            return true;
         }
     }
 }

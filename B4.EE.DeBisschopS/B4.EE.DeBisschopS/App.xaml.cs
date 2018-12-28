@@ -14,7 +14,11 @@ namespace B4.EE.DeBisschopS
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new OrderPage());
+            MainPage = new NavigationPage(new OrderPage())
+            {
+                BackgroundColor = Color.Transparent,
+                BarTextColor = Color.DarkOrange
+            };
         }
 
         protected override void OnStart()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using B4.EE.DeBisschopS.PageModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +14,9 @@ namespace B4.EE.DeBisschopS.Pages
 	{
 		public NewItemPage ()
 		{
-			InitializeComponent ();
+		    var pageModel = new NewItemPageModel(this.Navigation);
+		    this.BindingContext = pageModel;
+            InitializeComponent ();
 		}
 	}
 }

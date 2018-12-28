@@ -20,8 +20,8 @@ namespace B4.EE.DeBisschopS.Pages
 		public OrderPage ()
 		{
 			InitializeComponent ();
-		    var pageModel = new OrderPageModel();
-		    this.BindingContext = pageModel;
+		    var pageModel = new OrderPageModel(this.Navigation);
+            this.BindingContext = pageModel;
         }
 	}
 }

@@ -2,7 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="B4.EE.DeBisschopS.Pages.OrderPage"
-             x:Name="ContentPage">
+             x:Name="ContentPage"
+             Title="Take an order">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add item" Command="{Binding GoToNewItemPage}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <ListView ItemsSource="{Binding ItemList}" RowHeight="85" >

@@ -12,7 +12,7 @@
             <Entry Keyboard="Numeric" Text="{Binding cost, Mode=OneWayToSource}" Placeholder="Cost of the item"></Entry>
 
             <Label Text="Icon" TextColor="DarkOrange" FontAttributes="Bold" />
-            <ListView x:Name="AllImageNames" SelectedItem="{Binding imageClicked, Mode=TwoWay}">
+            <ListView x:Name="AllImageNames" SelectedItem="{Binding imageClicked, Mode=TwoWay}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -24,10 +24,8 @@
                 </ListView.ItemTemplate>
             </ListView>
             <StackLayout Orientation="Horizontal" VerticalOptions="End">
-                <Button Command="{Binding AddItem}" Text="Save"></Button>
+                <Button Style="{StaticResource StandardButton}" Command="{Binding AddItem}" Text="Save"></Button>
             </StackLayout>
         </StackLayout>
-
-
     </ContentPage.Content>
 </ContentPage>

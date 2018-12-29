@@ -8,7 +8,7 @@
             <Label Text="Currency" TextColor="DarkOrange" FontAttributes="Bold" />
             <Picker x:Name="CurrencyOptions"></Picker>
 
-            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
                 <Button Style="{StaticResource StandardButton}" Text="Make new item" Command="{Binding GoToNewItemPage}"></Button>
             </StackLayout>
         </StackLayout>

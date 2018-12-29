@@ -6,8 +6,11 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Currency" TextColor="DarkOrange" FontAttributes="Bold" />
-            <Entry Text="{Binding name, Mode=OneWayToSource}" Placeholder="Name of the item"></Entry>
+            <Picker x:Name="CurrencyOptions"></Picker>
 
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <Button Style="{StaticResource StandardButton}" Text="Make new item" Command="{Binding GoToNewItemPage}"></Button>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

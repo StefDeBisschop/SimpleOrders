@@ -5,14 +5,14 @@
              x:Name="ContentPage"
              Title="Take an order">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="settings.png" Command="{Binding GoToNewItemPage}"></ToolbarItem>
+        <ToolbarItem Icon="settings.png" Command="{Binding GoToSettingsPage}"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding ItemList}" RowHeight="85" >
+            <ListView ItemsSource="{Binding ItemList}"  >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell IsEnabled="False">
                             <ViewCell.View>
                                 <Grid Padding="5">
                                     <Grid.ColumnDefinitions>
@@ -21,7 +21,9 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="64" />
+                                    </Grid.RowDefinitions>
 
                                     <AbsoluteLayout Grid.Column="0">
                                         <Grid>
@@ -30,15 +32,16 @@
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Image Grid.Row="0" Source="{Binding ImageNameF}" HeightRequest="70"></Image>
-                                            <Label Grid.Row="1" Text="{Binding Name}" HorizontalTextAlignment="End" />
+                                            <Label Grid.Row="1" Text="{Binding Name}" FontAttributes="Bold" HorizontalTextAlignment="End" />
 
                                         </Grid>
 
                                     </AbsoluteLayout>
-                                    <Label Grid.Column="1" VerticalTextAlignment="Start" Text="{Binding Count}" TextColor="DarkOrange" FontSize="75" FontAttributes="Bold" />
+                                    <Label VerticalTextAlignment="Center" Grid.Column="1" Text="{Binding Count}" Margin="0" TextColor="DarkOrange" FontSize="50" FontAttributes="Bold" />
 
-                                    <Button Image="plus.png" Grid.Column="2" Command="{Binding Path=BindingContext.RaiseItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}" BorderColor="Transparent" BackgroundColor="Transparent" />
-                                    <Button Image="minus.png" Grid.Column="3" Command="{Binding Path=BindingContext.LowerItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}" BorderColor="Transparent" BackgroundColor="Transparent" />
+                                    <Button Margin="0" Text="+" FontSize="60" TextColor="DarkOrange" FontAttributes="Bold" Grid.Column="2" Command="{Binding Path=BindingContext.RaiseItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}" BorderColor="Transparent" BackgroundColor="Transparent" />
+
+                                    <Button VerticalOptions="Center" Text="-" FontSize="60" TextColor="DarkOrange" FontAttributes="Bold" Grid.Column="3" Command="{Binding Path=BindingContext.LowerItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}" BorderColor="Transparent" BackgroundColor="Transparent" />
 
                                 </Grid>
                             </ViewCell.View>
@@ -47,10 +50,11 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+            <StackLayout BackgroundColor="LightGray" Orientation="Horizontal" VerticalOptions="End">
 
-                <Label FontSize="60" Grid.Column="0" TextColor="DarkOrange" Text="Total" FontAttributes="Bold"></Label>
-                <Label FontSize="60" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Grid.Column="1" TextColor="DarkOrange" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
+                <Label FontSize="40" Grid.Column="0" TextColor="DarkOrange" Text="Total" FontAttributes="Bold"></Label>
+                <Label FontSize="40" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Grid.Column="1" TextColor="DarkOrange" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
+                <Button Style="{StaticResource SmallButton}" Text="Order" Command="{Binding GoToConfirmationPage}"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

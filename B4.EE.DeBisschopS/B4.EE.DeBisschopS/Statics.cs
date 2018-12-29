@@ -32,5 +32,18 @@ namespace B4.EE.DeBisschopS
                 "strawberry_magnum.png",
                 "vanilla_cupcake.png"
             };
+
+        public static readonly ObservableCollection<string> CurrencyOptions =
+            new ObservableCollection<string>()
+            {
+                "Tokens",
+                "Euro",
+                "Dollar",
+                "Coins",
+                "Yen",
+                "Pound",
+                "Boxes",
+                "Items"
+            };
     }
 }

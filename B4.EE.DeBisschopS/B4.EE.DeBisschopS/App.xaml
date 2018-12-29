@@ -3,6 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="B4.EE.DeBisschopS.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <!--Standard button-->
+            <Style x:Key="StandardButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="DarkOrange" />
+                <Setter Property="CornerRadius" Value="50" />
+                <Setter Property="BorderWidth" Value="10" />
+                <Setter Property="BorderColor" Value="DarkOrange" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="35" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
 
+            <!--Small button-->
+            <Style x:Key="SmallButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="DarkOrange" />
+                <Setter Property="CornerRadius" Value="30" />
+                <Setter Property="BorderWidth" Value="5" />
+                <Setter Property="BorderColor" Value="DarkOrange" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0,10,10,0" />
+                <Setter Property="FontSize" Value="25" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

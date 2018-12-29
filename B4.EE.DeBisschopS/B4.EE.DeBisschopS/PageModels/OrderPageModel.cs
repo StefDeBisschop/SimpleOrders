@@ -85,10 +85,26 @@ namespace B4.EE.DeBisschopS.PageModels
                 ItemCount--;
         }
 
-        public ICommand GoToNewItemPage => new Command(
+        public ICommand GoToSettingsPage => new Command(
             () =>
             {
-                navigation.PushAsync(new NewItemPage());
+                navigation.PushAsync(new SettingsPage());
+            });
+
+        public ICommand GoToConfirmationPage => new Command(
+            () =>
+            {
+                ObservableCollection<Item> OrderedItems = ItemList;
+
+                for (int i = ItemList.Count - 1; i >= 0; i--)
+                {
+                    if (OrderedItems[i].Count <= 0)
+                    {
+                        OrderedItems.RemoveAt(i);
+                    }
+                }
+
+                navigation.PushAsync(new ConfirmationPage(OrderedItems));
             });
 
         public ICommand RaiseItem => new Command(

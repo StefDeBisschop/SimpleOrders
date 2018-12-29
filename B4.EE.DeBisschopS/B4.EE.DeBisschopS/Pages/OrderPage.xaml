@@ -5,7 +5,7 @@
              x:Name="ContentPage"
              Title="Take an order">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add item" Command="{Binding GoToNewItemPage}"></ToolbarItem>
+        <ToolbarItem Icon="settings.png" Command="{Binding GoToNewItemPage}"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>

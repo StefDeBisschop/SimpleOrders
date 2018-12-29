@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="B4.EE.DeBisschopS.Pages.SettingsPage"
+             Title="Settings">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Currency" TextColor="DarkOrange" FontAttributes="Bold" />
+            <Entry Text="{Binding name, Mode=OneWayToSource}" Placeholder="Name of the item"></Entry>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

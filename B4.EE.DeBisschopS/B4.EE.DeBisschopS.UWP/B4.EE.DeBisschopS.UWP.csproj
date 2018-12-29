@@ -150,6 +150,7 @@
     <Content Include="plus.png" />
     <Content Include="popcorn.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="settings.png" />
     <Content Include="sliced_pizza.png" />
     <Content Include="soft_ice_cream.png" />
     <Content Include="strawberry_magnum.png" />

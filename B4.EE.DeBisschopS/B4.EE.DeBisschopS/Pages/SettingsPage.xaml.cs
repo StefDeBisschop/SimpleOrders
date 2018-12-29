@@ -10,14 +10,13 @@ using Xamarin.Forms.Xaml;
 namespace B4.EE.DeBisschopS.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewItemPage : ContentPage
+	public partial class SettingsPage : ContentPage
 	{
-		public NewItemPage ()
+		public SettingsPage ()
 		{
-		    var pageModel = new NewItemPageModel(this.Navigation);
-            this.BindingContext = pageModel;
-            InitializeComponent ();
-		    AllImageNames.ItemsSource = Statics.ImageNamesList;
+			InitializeComponent ();
+		    var pageModel = new SettingsPageModel(this.Navigation);
+		    this.BindingContext = pageModel;
         }
 	}
 }

@@ -9,49 +9,34 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding ItemList}"  >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell IsEnabled="False">
-                            <ViewCell.View>
-                                <Grid Padding="5">
+
+            <StackLayout>
+                <ListView ItemsSource="{Binding ItemList}" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="2*"></ColumnDefinition>
                                         <ColumnDefinition Width="2*"></ColumnDefinition>
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="64" />
-                                    </Grid.RowDefinitions>
-
-                                    <AbsoluteLayout Grid.Column="0">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Image Grid.Row="0" Source="{Binding ImageNameF}" HeightRequest="70"></Image>
-                                            <Label Grid.Row="1" Text="{Binding Name}" FontAttributes="Bold" HorizontalTextAlignment="End" />
-
-                                        </Grid>
-
-                                    </AbsoluteLayout>
-                                    <Label VerticalTextAlignment="Center" Grid.Column="1" Text="{Binding Count}" Margin="0" TextColor="DarkOrange" FontSize="50" FontAttributes="Bold" />
-
-                                    <Button Margin="0" Text="+" FontSize="60" TextColor="DarkOrange" FontAttributes="Bold" Grid.Column="2" Command="{Binding Path=BindingContext.RaiseItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}" BorderColor="Transparent" BackgroundColor="Transparent" />
-
-                                    <Button VerticalOptions="Center" Text="-" FontSize="60" TextColor="DarkOrange" FontAttributes="Bold" Grid.Column="3" Command="{Binding Path=BindingContext.LowerItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}" BorderColor="Transparent" BackgroundColor="Transparent" />
-
+                                    <StackLayout Grid.Column="0" Orientation="Vertical">
+                                        <Image Source="{Binding ImageNameF}" Style="{StaticResource ItemImageSmall}" HorizontalOptions="Start"></Image>
+                                        <Label Text="{Binding Name}" Style="{StaticResource ItemLabelSmall}" HorizontalTextAlignment="Start"></Label>
+                                    </StackLayout>
+                                    <Label Grid.Column="1" Text="{Binding Count}" Style="{StaticResource CountLabel}"></Label>
+                                    <Button Grid.Column="2" Style="{StaticResource CountButton}" Text="+" Command="{Binding Path=BindingContext.RaiseItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}"></Button>
+                                    <Button Grid.Column="3" Style="{StaticResource CountButton}" Text="-" Command="{Binding Path=BindingContext.LowerItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}"></Button>
                                 </Grid>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
 
-            <StackLayout BackgroundColor="LightGray" Orientation="Horizontal" VerticalOptions="End">
-
+            <StackLayout BackgroundColor="LightGray" Orientation="Horizontal" VerticalOptions="EndAndExpand">
                 <Label FontSize="40" Grid.Column="0" TextColor="DarkOrange" Text="Total" FontAttributes="Bold"></Label>
                 <Label FontSize="40" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Grid.Column="1" TextColor="DarkOrange" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
                 <Button Style="{StaticResource SmallButton}" Text="Order" Command="{Binding GoToConfirmationPage}"></Button>

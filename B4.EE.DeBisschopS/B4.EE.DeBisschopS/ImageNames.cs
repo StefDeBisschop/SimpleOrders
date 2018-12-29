@@ -5,7 +5,7 @@ using System.Text;
 
 namespace B4.EE.DeBisschopS
 {
-    public static class ImageNames
+    public static class Statics
     {
         public static readonly ObservableCollection<string> ImageNamesList =
             new ObservableCollection<string>()

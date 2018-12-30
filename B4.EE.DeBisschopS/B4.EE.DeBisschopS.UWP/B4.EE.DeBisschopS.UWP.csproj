@@ -145,6 +145,7 @@
     <Content Include="lemon.png" />
     <Content Include="macaron_cookies.png" />
     <Content Include="minus.png" />
+    <Content Include="ok.png" />
     <Content Include="pear.png" />
     <Content Include="pizza.png" />
     <Content Include="plus.png" />

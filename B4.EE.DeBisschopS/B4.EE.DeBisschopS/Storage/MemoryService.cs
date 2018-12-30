@@ -31,6 +31,9 @@ namespace B4.EE.DeBisschopS.Storage
             if (await DoesFileExist(Constants.ITEMS_LIST_FILENAME))
             {
                 string readedText = await ReadAllTextAsync(Constants.ITEMS_LIST_FILENAME);
+
+                if (readedText == "")
+                    return new ObservableCollection<Item>();
                 return JsonConvert.DeserializeObject<ObservableCollection<Item>>(readedText);
             }
             else

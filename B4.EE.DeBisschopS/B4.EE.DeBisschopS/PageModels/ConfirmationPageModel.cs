@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using B4.EE.DeBisschopS.Models;
+using B4.EE.DeBisschopS.Pages;
 using Xamarin.Forms;
 
 namespace B4.EE.DeBisschopS.PageModels
@@ -126,6 +127,12 @@ namespace B4.EE.DeBisschopS.PageModels
                         }
                         break;
                 }
+            });
+
+        public ICommand GoToFinishedOrderPage => new Command(
+            () =>
+            {
+                navigation.PushAsync(new FinishedOrderPage());
             });
     }
 }

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="B4.EE.DeBisschopS.Pages.FinishedOrderPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Image Source="ok.png" HorizontalOptions="CenterAndExpand"></Image>
+            <Button Style="{StaticResource StandardButton}" Text="Next order" Command="{Binding GoToOrderPage}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

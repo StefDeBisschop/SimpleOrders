@@ -39,6 +39,8 @@
                         <Label FontSize="40" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Text="{Binding FullCost}" FontAttributes="Bold"></Label>
                         <Label FontSize="40" HorizontalTextAlignment="End" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
                     </StackLayout>
+
+                    <Button Style="{StaticResource StandardButton}" Text="Payed" Command="{Binding GoToFinishedOrderPage}"></Button>
                 </StackLayout>
             </Grid>
         </StackLayout>

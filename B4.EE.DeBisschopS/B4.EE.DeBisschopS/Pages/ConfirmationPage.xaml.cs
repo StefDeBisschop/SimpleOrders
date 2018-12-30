@@ -17,8 +17,7 @@ namespace B4.EE.DeBisschopS.Pages
 		public ConfirmationPage (ObservableCollection<Item> OrderedItems)
 		{
 		    InitializeComponent();
-		    var pageModel = new ConfirmationPageModel(this.Navigation);
-		    pageModel.OrderedItems = OrderedItems;
+		    var pageModel = new ConfirmationPageModel(this.Navigation, OrderedItems);
 		    this.BindingContext = pageModel;
         }
 	}

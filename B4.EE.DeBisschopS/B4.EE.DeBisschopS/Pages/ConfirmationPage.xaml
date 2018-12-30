@@ -5,23 +5,42 @@
              Title="Check and set order">
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding OrderedItems}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ListView Grid.Row="0" ItemsSource="{Binding OrderedItems}" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding Name}"></Label>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                    <Image Grid.Column="0" Source="{Binding ImageNameF}" HeightRequest="60"></Image>
+                                    <Label Grid.Column="1" HorizontalOptions="Start" VerticalTextAlignment="Center" Text="{Binding Name}" FontAttributes="Bold" HorizontalTextAlignment="End" FontSize="24" />
+                                    <Label Grid.Column="2" HorizontalOptions="End" VerticalTextAlignment="Center" Text="{Binding Count}" FontSize="30" TextColor="DarkOrange" FontAttributes="Bold" ></Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackLayout Grid.Row="1">
+                    <Button x:Name="btnChecked" Style="{StaticResource StandardButton}" BackgroundColor="{Binding bgColorChecked}" Command="{Binding ChangeColor}" CommandParameter="{x:Reference btnChecked}" Text="Checked"></Button>
+                    <Button x:Name="btnInHands" Style="{StaticResource StandardButton}" Text="In Hands" BackgroundColor="{Binding bgColorInHands}" Command="{Binding ChangeColor}" CommandParameter="{x:Reference btnInHands}"></Button>
+
+                    <StackLayout BackgroundColor="LightGray" Orientation="Horizontal">
+                        <Label FontSize="40" TextColor="DarkOrange" Text="Total" FontAttributes="Bold"></Label>
+                        <Label FontSize="40" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Text="{Binding FullCost}" FontAttributes="Bold"></Label>
+                        <Label FontSize="40" HorizontalTextAlignment="End" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -37,8 +37,8 @@
             </StackLayout>
 
             <StackLayout BackgroundColor="LightGray" Orientation="Horizontal" VerticalOptions="EndAndExpand">
-                <Label FontSize="40" Grid.Column="0" TextColor="DarkOrange" Text="Total" FontAttributes="Bold"></Label>
-                <Label FontSize="40" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Grid.Column="1" TextColor="DarkOrange" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
+                <Label FontSize="40" TextColor="DarkOrange" Text="Total" FontAttributes="Bold"></Label>
+                <Label FontSize="40" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" TextColor="DarkOrange" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
                 <Button Style="{StaticResource SmallButton}" Text="Order" Command="{Binding GoToConfirmationPage}"></Button>
             </StackLayout>
         </StackLayout>

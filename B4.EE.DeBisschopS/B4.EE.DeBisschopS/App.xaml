@@ -9,10 +9,12 @@
                 <Setter Property="BackgroundColor" Value="DarkOrange" />
                 <Setter Property="CornerRadius" Value="50" />
                 <Setter Property="BorderWidth" Value="10" />
+                <Setter Property="Margin" Value="10,10,10,10" />
+                <Setter Property="WidthRequest" Value="250" />
                 <Setter Property="BorderColor" Value="DarkOrange" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="FontSize" Value="35" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
             </Style>
 
             <!--Small button-->
@@ -25,6 +27,33 @@
                 <Setter Property="Margin" Value="0,10,10,0" />
                 <Setter Property="FontSize" Value="25" />
                 <Setter Property="VerticalOptions" Value="EndAndExpand" />
+            </Style>
+
+            <!--CountButton-->
+            <Style x:Key="CountButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="DarkOrange" />
+                <Setter Property="FontSize" Value="50" />
+            </Style>
+
+            <!--CountLabel-->
+            <Style x:Key="CountLabel" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="DarkOrange" />
+                <Setter Property="FontSize" Value="40" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <!--ItemLabelSmall-->
+            <Style x:Key="ItemLabelSmall" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <!--ItemImageSmall-->
+            <Style x:Key="ItemImageSmall" TargetType="Image">
+                <Setter Property="HeightRequest" Value="60" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

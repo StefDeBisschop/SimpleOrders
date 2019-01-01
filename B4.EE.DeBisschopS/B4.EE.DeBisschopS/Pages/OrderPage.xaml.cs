@@ -17,16 +17,18 @@ namespace B4.EE.DeBisschopS.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class OrderPage : ContentPage
 	{
-		public OrderPage ()
+	    public ObservableCollection<Item> initialItems;
+		public OrderPage (ObservableCollection<Item> InitialItems)
 		{
 			InitializeComponent ();
-		    var pageModel = new OrderPageModel(this.Navigation);
-            this.BindingContext = pageModel;
+		    initialItems = InitialItems;
+            //var pageModel = new OrderPageModel(this.Navigation, InitialItems);
+            //this.BindingContext = pageModel;
         }
 
 	    protected override void OnAppearing()
 	    {
-	        var newPageModel = new OrderPageModel(this.Navigation);
+	        var newPageModel = new OrderPageModel(this.Navigation, initialItems);
 	        this.BindingContext = newPageModel;
             base.OnAppearing();
 	    }

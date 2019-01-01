@@ -54,17 +54,18 @@ namespace B4.EE.DeBisschopS.PageModels
         }
         
         public MemoryService ms;
-        public OrderPageModel(INavigation navigation)
+        public OrderPageModel(INavigation navigation, ObservableCollection<Item> InitialItems)
         {
             this.navigation = navigation;
-            InitializeAsync();
+            //InitializeAsync();
+            ItemList = InitialItems;
         }
 
-        public async void InitializeAsync()
-        {
-            ms = new MemoryService();
-            ItemList = await ms.GetAllItems();
-        }
+        //public async void InitializeAsync()
+        //{
+        //    ms = new MemoryService();
+        //    ItemList = await ms.GetAllItems();
+        //}
 
         public void ChangeItemCount(bool countUp)
         {

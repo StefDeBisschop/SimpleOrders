@@ -61,11 +61,17 @@ namespace B4.EE.DeBisschopS.PageModels
             ItemList = InitialItems;
         }
 
-        //public async void InitializeAsync()
-        //{
-        //    ms = new MemoryService();
-        //    ItemList = await ms.GetAllItems();
-        //}
+        public OrderPageModel(INavigation navigation)
+        {
+            this.navigation = navigation;
+            InitializeAsync();
+        }
+
+        public async void InitializeAsync()
+        {
+            ms = new MemoryService();
+            ItemList = await ms.GetAllItems();
+        }
 
         public void ChangeItemCount(bool countUp)
         {

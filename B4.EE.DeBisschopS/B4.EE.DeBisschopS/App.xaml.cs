@@ -18,7 +18,6 @@ namespace B4.EE.DeBisschopS
         public App()
         {
             InitializeComponent();
-
             MainPage = new LoadingPage();
         }
 

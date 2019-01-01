@@ -14,23 +14,29 @@ using Xamarin.Forms.Xaml;
 
 namespace B4.EE.DeBisschopS.Pages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class OrderPage : ContentPage
-	{
-	    public ObservableCollection<Item> initialItems;
-		public OrderPage (ObservableCollection<Item> InitialItems)
-		{
-			InitializeComponent ();
-		    initialItems = InitialItems;
-            //var pageModel = new OrderPageModel(this.Navigation, InitialItems);
-            //this.BindingContext = pageModel;
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class OrderPage : ContentPage
+    {
+        private ObservableCollection<Item> initialItems;
+        private bool isStarted;
+        private OrderPageModel newPageModel;
+        public OrderPage(ObservableCollection<Item> InitialItems)
+        {
+            InitializeComponent();
+            initialItems = InitialItems;
         }
 
-	    protected override void OnAppearing()
-	    {
-	        var newPageModel = new OrderPageModel(this.Navigation, initialItems);
-	        this.BindingContext = newPageModel;
+        protected override void OnAppearing()
+        {
+            if (isStarted)
+                newPageModel = new OrderPageModel(this.Navigation);
+            else
+            {
+                newPageModel = new OrderPageModel(this.Navigation, initialItems);
+                isStarted = true;
+            }
+            this.BindingContext = newPageModel;
             base.OnAppearing();
-	    }
-	}
+        }
+    }
 }

@@ -63,17 +63,6 @@ namespace B4.EE.DeBisschopS.PageModels
         public async void InitializeAsync()
         {
             ms = new MemoryService();
-
-            //TestData pushen
-            //await ms.CreateFile(Constants.ITEMS_LIST_FILENAME);
-            //TestData = new ObservableCollection<Item>
-            //{
-            //    new Item {Cost = 12, Name = "TestItem", ImageNameF = "grapes.png"},
-            //    new Item {Cost = 10, Name = "TestItem2", ImageNameF = "carrot.png"}
-            //};
-            //string content = JsonConvert.SerializeObject(TestData);
-            //await ms.WriteTextAllAsync(Constants.ITEMS_LIST_FILENAME, content);
-            //----
             ItemList = await ms.GetAllItems();
         }
 

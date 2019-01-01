@@ -17,7 +17,7 @@ namespace B4.EE.DeBisschopS.PageModels
         public ICommand GoToOrderPage => new Command(
             () =>
             {
-                navigation.PushAsync(new OrderPage());
+                navigation.PopToRootAsync();
             });
     }
 }

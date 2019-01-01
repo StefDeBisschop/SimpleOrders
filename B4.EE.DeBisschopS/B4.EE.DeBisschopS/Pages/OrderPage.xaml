@@ -9,7 +9,6 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-
             <StackLayout>
                 <ListView ItemsSource="{Binding ItemList}" HasUnevenRows="True">
                     <ListView.ItemTemplate>

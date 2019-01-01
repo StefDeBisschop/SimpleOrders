@@ -12,7 +12,7 @@
             <Entry Keyboard="Numeric" Text="{Binding cost, Mode=OneWayToSource}" Placeholder="Cost of the item"></Entry>
 
             <Label Text="Icon" TextColor="DarkOrange" FontAttributes="Bold" />
-            <ListView x:Name="AllImageNames" SelectedItem="{Binding imageClicked, Mode=TwoWay}" HasUnevenRows="True">
+            <ListView x:Name="AllImageNames" SelectedItem="{Binding imageClicked, Mode=TwoWay}" HasUnevenRows="True" CachingStrategy="RecycleElementAndDataTemplate">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

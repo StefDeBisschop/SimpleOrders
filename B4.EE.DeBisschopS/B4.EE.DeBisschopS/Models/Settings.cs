@@ -6,6 +6,6 @@ namespace B4.EE.DeBisschopS.Models
 {
     public class Settings
     {
-        public string currency { get; set; } = "Tokens";
+        public string currency { get; set; }
     }
 }

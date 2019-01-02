@@ -36,7 +36,14 @@
 
                     <StackLayout BackgroundColor="LightGray" Orientation="Horizontal">
                         <Label FontSize="40" TextColor="DarkOrange" Text="Total" FontAttributes="Bold"></Label>
-                        <Label FontSize="40" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Text="{Binding FullCost}" FontAttributes="Bold"></Label>
+                        <Label FontSize="40" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding FullCost}"/>
+                                    <Span Text="{Binding currencySetting}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                         <Label FontSize="40" HorizontalTextAlignment="End" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
                     </StackLayout>
 

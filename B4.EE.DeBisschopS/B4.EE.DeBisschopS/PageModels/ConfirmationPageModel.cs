@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Input;
 using B4.EE.DeBisschopS.Models;
 using B4.EE.DeBisschopS.Pages;
+using B4.EE.DeBisschopS.Storage;
 using Xamarin.Forms;
 
 namespace B4.EE.DeBisschopS.PageModels
@@ -17,7 +18,23 @@ namespace B4.EE.DeBisschopS.PageModels
         private ObservableCollection<Item> _OrderedItems;
         public bool isChecked;
         public bool isInHands;
+        public MemoryService ms;
         public event PropertyChangedEventHandler PropertyChanged;
+        private string _currencySetting;
+        public string currencySetting
+        {
+            get
+            {
+                return _currencySetting;
+            }
+
+            set
+            {
+                _currencySetting = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(currencySetting)));
+            }
+        }
+        
 
         public ObservableCollection<Item> OrderedItems
         {
@@ -90,8 +107,16 @@ namespace B4.EE.DeBisschopS.PageModels
         public ConfirmationPageModel(INavigation navigation, ObservableCollection<Item> _orderedItems)
         {
             this.OrderedItems = _orderedItems;
+            InitializeAsync();
             calculateTotals();
             this.navigation = navigation;
+        }
+
+        public async void InitializeAsync()
+        {
+            ms = new MemoryService();
+            Settings settings = await ms.GetCurrency();
+            currencySetting = settings.currency;
         }
 
         public void calculateTotals()

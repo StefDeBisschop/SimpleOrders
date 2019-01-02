@@ -158,7 +158,8 @@ namespace B4.EE.DeBisschopS.PageModels
         public ICommand GoToFinishedOrderPage => new Command(
             () =>
             {
-                navigation.PushAsync(new FinishedOrderPage());
+                if(isChecked && isInHands)
+                    navigation.PushAsync(new FinishedOrderPage());
             });
     }
 }

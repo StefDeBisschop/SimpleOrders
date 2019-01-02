@@ -7,11 +7,9 @@
             <!--Standard button-->
             <Style x:Key="StandardButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="DarkOrange" />
-                <Setter Property="CornerRadius" Value="50" />
-                <Setter Property="BorderWidth" Value="10" />
+                <Setter Property="CornerRadius" Value="20" />
                 <Setter Property="Margin" Value="10,10,10,10" />
-                <Setter Property="WidthRequest" Value="250" />
-                <Setter Property="BorderColor" Value="DarkOrange" />
+                <Setter Property="WidthRequest" Value="320" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
@@ -20,9 +18,8 @@
             <!--Small button-->
             <Style x:Key="SmallButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="DarkOrange" />
-                <Setter Property="CornerRadius" Value="30" />
-                <Setter Property="BorderWidth" Value="5" />
-                <Setter Property="BorderColor" Value="DarkOrange" />
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="WidthRequest" Value="130" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Margin" Value="0,10,10,0" />
                 <Setter Property="FontSize" Value="25" />

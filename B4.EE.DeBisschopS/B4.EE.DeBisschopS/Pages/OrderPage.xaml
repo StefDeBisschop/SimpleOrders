@@ -9,8 +9,8 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout>
-                <ListView ItemsSource="{Binding ItemList}" HasUnevenRows="True">
+            <StackLayout VerticalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding ItemList}" HasUnevenRows="True" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -21,6 +21,10 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
                                     <StackLayout Grid.Column="0" Orientation="Vertical">
                                         <Image Source="{Binding ImageNameF}" Style="{StaticResource ItemImageSmall}" HorizontalOptions="Start"></Image>
                                         <Label Text="{Binding Name}" Style="{StaticResource ItemLabelSmall}" HorizontalTextAlignment="Start"></Label>
@@ -35,7 +39,7 @@
                 </ListView>
             </StackLayout>
 
-            <StackLayout BackgroundColor="LightGray" Orientation="Horizontal" VerticalOptions="EndAndExpand">
+            <StackLayout BackgroundColor="LightGray" Orientation="Horizontal" VerticalOptions="End">
                 <Label FontSize="40" TextColor="DarkOrange" Text="Total" FontAttributes="Bold"></Label>
                 <Label FontSize="40" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" TextColor="DarkOrange" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
                 <Button Style="{StaticResource SmallButton}" Text="Order" Command="{Binding GoToConfirmationPage}"></Button>

@@ -113,8 +113,13 @@ namespace B4.EE.DeBisschopS.PageModels
                 Item item = (Item)obj;
                 try
                 {
-                    ItemList.FirstOrDefault(_item => _item.Id == item.Id).Count++;
-                    ChangeItemCount(true);
+                    Item itemFound = ItemList.FirstOrDefault(_item => _item.Id == item.Id);
+                    if (itemFound.Count >= 0)
+                    {
+                        itemFound.Count++;
+                        ChangeItemCount(true);
+                    }
+
                 }
                 catch { }
             });
@@ -123,14 +128,18 @@ namespace B4.EE.DeBisschopS.PageModels
             (obj) =>
             {
                 Item item = (Item)obj;
-                ObservableCollection<Item> listCopy = new ObservableCollection<Item>(ItemList);
                 try
                 {
-                    ItemList.FirstOrDefault(_item => _item.Id == item.Id).Count--;
-                    ChangeItemCount(true);
+                    Item itemFound = ItemList.FirstOrDefault(_item => _item.Id == item.Id);
+                    if (itemFound.Count > 0)
+                    {
+                        itemFound.Count--;
+                        ChangeItemCount(false);
+                    }
+
                 }
                 catch { }
             });
-        
+
     }
 }

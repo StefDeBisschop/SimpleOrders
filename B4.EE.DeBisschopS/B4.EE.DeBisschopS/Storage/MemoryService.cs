@@ -110,7 +110,7 @@ namespace B4.EE.DeBisschopS.Storage
             return settings;
         }
 
-        public async Task<Settings> GetCurrency()
+        public async Task<Settings> GetSettings()
         {
             string readedText = await ReadAllTextAsync(Constants.SETTINGS_FILENAME);
             return JsonConvert.DeserializeObject<Settings>(readedText);

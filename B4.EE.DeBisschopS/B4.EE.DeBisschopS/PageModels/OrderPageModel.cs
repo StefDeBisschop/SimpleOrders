@@ -11,7 +11,6 @@ using System.Windows.Input;
 using B4.EE.DeBisschopS.Models;
 using B4.EE.DeBisschopS.Pages;
 using B4.EE.DeBisschopS.Storage;
-using FreshMvvm;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Constants = B4.EE.DeBisschopS.Storage.Constants;

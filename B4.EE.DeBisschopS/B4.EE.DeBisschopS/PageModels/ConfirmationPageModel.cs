@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using B4.EE.DeBisschopS.Models;
 using B4.EE.DeBisschopS.Pages;
@@ -20,18 +21,18 @@ namespace B4.EE.DeBisschopS.PageModels
         public bool isInHands;
         public MemoryService ms;
         public event PropertyChangedEventHandler PropertyChanged;
-        private string _currencySetting;
-        public string currencySetting
+        private string _CurrencySetting;
+        public string CurrencySetting
         {
             get
             {
-                return _currencySetting;
+                return _CurrencySetting;
             }
 
             set
             {
-                _currencySetting = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(currencySetting)));
+                _CurrencySetting = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrencySetting)));
             }
         }
         
@@ -115,8 +116,8 @@ namespace B4.EE.DeBisschopS.PageModels
         public async void InitializeAsync()
         {
             ms = new MemoryService();
-            Settings settings = await ms.GetCurrency();
-            currencySetting = settings.currency;
+            Settings settings = await ms.GetSettings();
+            CurrencySetting = settings.currency;
         }
 
         public void calculateTotals()

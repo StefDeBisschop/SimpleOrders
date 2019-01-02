@@ -16,32 +16,7 @@ namespace B4.EE.DeBisschopS.Storage
         {
         }
 
-        public async Task<Item> AddNewItem(string name, int cost, string imageNameF)
-        {
-            Item newItem = new Item() { Name = name, Cost = cost, ImageNameF = imageNameF };
-            ObservableCollection<Item> allItems = await GetAllItems();
-            allItems.Add(newItem);
-            string newJson = JsonConvert.SerializeObject(allItems);
-            await WriteTextAllAsync(Constants.ITEMS_LIST_FILENAME, newJson);
-            return newItem;
-        }
-
-        public async Task<ObservableCollection<Item>> GetAllItems()
-        {
-            if (await DoesFileExist(Constants.ITEMS_LIST_FILENAME))
-            {
-                string readedText = await ReadAllTextAsync(Constants.ITEMS_LIST_FILENAME);
-
-                if (readedText == "")
-                    return new ObservableCollection<Item>();
-                return JsonConvert.DeserializeObject<ObservableCollection<Item>>(readedText);
-            }
-            else
-            {
-                await CreateFile(Constants.ITEMS_LIST_FILENAME);
-                return null;
-            }
-        }
+        // General methods
 
         public async Task<bool> DoesFileExist(string fileName)
         {
@@ -58,7 +33,7 @@ namespace B4.EE.DeBisschopS.Storage
         public async Task<IFile> CreateFile(string filename)
         {
             IFolder folder = FileSystem.Current.LocalStorage;
-            if (!await DoesFileExist(Constants.ITEMS_LIST_FILENAME))
+            if (!await DoesFileExist(filename))
             {
 
                 IFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
@@ -70,27 +45,75 @@ namespace B4.EE.DeBisschopS.Storage
 
         public async Task<string> ReadAllTextAsync(string fileName)
         {
-            string content = "";
-            IFolder folder = FileSystem.Current.LocalStorage;
-            IFile file = await folder.GetFileAsync(fileName);
-            content = await file.ReadAllTextAsync();
-            return content;
+            if (await DoesFileExist(fileName))
+            {
+                string content = "";
+                IFolder folder = FileSystem.Current.LocalStorage;
+                IFile file = await folder.GetFileAsync(fileName);
+                content = await file.ReadAllTextAsync();
+                return content;
+            }
+            else
+            {
+                await CreateFile(fileName);
+                return await ReadAllTextAsync(fileName);
+            }
         }
 
         public async Task WriteTextAllAsync(string filename, string content = "")
         {
-            //IFile file = await filename.CreateFile(rootFolder);
-            IFolder folder = FileSystem.Current.LocalStorage;
-            IFile file = await folder.GetFileAsync(Constants.ITEMS_LIST_FILENAME);
-            await file.WriteAllTextAsync(content);
+            if (await DoesFileExist(filename))
+            {
+                //IFile file = await filename.CreateFile(rootFolder);
+                IFolder folder = FileSystem.Current.LocalStorage;
+                IFile file = await folder.GetFileAsync(filename);
+                await file.WriteAllTextAsync(content);
+            }
+            else
+            {
+                await CreateFile(filename);
+                await WriteTextAllAsync(filename, content);
+            }
         }
 
-        public async Task<bool> DeleteFile(string fileName)
+        // Methods for ItemList
+
+        public async Task<Item> AddNewItem(string name, int cost, string imageNameF)
         {
-            IFolder folder = FileSystem.Current.LocalStorage;
-            IFile file = await folder.GetFileAsync(fileName);
-            await file.DeleteAsync();
-            return true;
+            Item newItem = new Item() { Name = name, Cost = cost, ImageNameF = imageNameF };
+            ObservableCollection<Item> allItems = await GetAllItems();
+            allItems.Add(newItem);
+            string newJson = JsonConvert.SerializeObject(allItems);
+            await WriteTextAllAsync(Constants.ITEMS_LIST_FILENAME, newJson);
+            return newItem;
+        }
+
+        public async Task<ObservableCollection<Item>> GetAllItems()
+        {
+            string readedText = await ReadAllTextAsync(Constants.ITEMS_LIST_FILENAME);
+
+            if (readedText == "")
+                return new ObservableCollection<Item>();
+            return JsonConvert.DeserializeObject<ObservableCollection<Item>>(readedText);
+        }
+
+        // Methods for Settings
+
+        public async Task<Settings> ChangeCurrency(string currencyName)
+        {
+            Settings settings = new Settings()
+            {
+                currency = currencyName
+            };
+            string newJson = JsonConvert.SerializeObject(settings);
+            await WriteTextAllAsync(Constants.SETTINGS_FILENAME, newJson);
+            return settings;
+        }
+
+        public async Task<Settings> GetCurrency()
+        {
+            string readedText = await ReadAllTextAsync(Constants.SETTINGS_FILENAME);
+            return JsonConvert.DeserializeObject<Settings>(readedText);
         }
     }
 }

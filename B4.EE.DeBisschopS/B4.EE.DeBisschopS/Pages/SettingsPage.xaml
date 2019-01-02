@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Currency" TextColor="DarkOrange" FontAttributes="Bold" />
-            <Picker x:Name="CurrencyOptions"></Picker>
+            <Picker x:Name="CurrencyOptions" SelectedItem="{Binding currencySetting}"></Picker>
 
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
                 <Button Style="{StaticResource StandardButton}" Text="Make new item" Command="{Binding GoToNewItemPage}"></Button>

@@ -7,5 +7,6 @@ namespace B4.EE.DeBisschopS.Storage
     public static class Constants
     {
         public const string ITEMS_LIST_FILENAME = "ALL_ITEMS";
+        public const string SETTINGS_FILENAME = "SETTINGS";
     }
 }

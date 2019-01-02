@@ -40,6 +40,7 @@
                 <Setter Property="TextColor" Value="DarkOrange" />
                 <Setter Property="FontSize" Value="40" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
 
             <!--ItemLabelSmall-->
@@ -51,11 +52,13 @@
             <!--ItemImageSmall-->
             <Style x:Key="ItemImageSmall" TargetType="Image">
                 <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
             </Style>
 
             <!--Error label-->
             <Style x:Key="ErrorLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="Red" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

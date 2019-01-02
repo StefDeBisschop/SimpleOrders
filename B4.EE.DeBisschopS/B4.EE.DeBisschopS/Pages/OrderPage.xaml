@@ -16,7 +16,7 @@
                             <ViewCell>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
                                         <ColumnDefinition Width="2*"></ColumnDefinition>
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -26,8 +26,8 @@
                                         <RowDefinition Height="Auto"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <StackLayout Grid.Column="0" Orientation="Vertical">
-                                        <Image Source="{Binding ImageNameF}" Style="{StaticResource ItemImageSmall}" HorizontalOptions="Start"></Image>
-                                        <Label Text="{Binding Name}" Style="{StaticResource ItemLabelSmall}" HorizontalTextAlignment="Start"></Label>
+                                        <Image Source="{Binding ImageNameF}" Style="{StaticResource ItemImageSmall}"></Image>
+                                        <Label Text="{Binding Name}" Style="{StaticResource ItemLabelSmall}"></Label>
                                     </StackLayout>
                                     <Label Grid.Column="1" Text="{Binding Count}" Style="{StaticResource CountLabel}"></Label>
                                     <Button Grid.Column="2" Style="{StaticResource CountButton}" Text="+" Command="{Binding Path=BindingContext.RaiseItem, Source={x:Reference ContentPage}}" CommandParameter="{Binding .}"></Button>

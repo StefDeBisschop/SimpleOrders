@@ -30,7 +30,8 @@ namespace B4.EE.DeBisschopS
             MainPage = new NavigationPage(new OrderPage(InitialItems))
             {
                 BackgroundColor = Color.Transparent,
-                BarTextColor = Color.DarkOrange
+                BarTextColor = Color.DarkOrange,
+                BarBackgroundColor = Color.Transparent
             };
         }
 

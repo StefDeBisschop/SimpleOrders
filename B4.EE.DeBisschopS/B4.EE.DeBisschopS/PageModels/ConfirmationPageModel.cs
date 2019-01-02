@@ -108,7 +108,7 @@ namespace B4.EE.DeBisschopS.PageModels
         public ConfirmationPageModel(INavigation navigation, ObservableCollection<Item> _orderedItems)
         {
             this.OrderedItems = _orderedItems;
-            InitializeAsync();
+            //InitializeAsync();
             calculateTotals();
             this.navigation = navigation;
         }

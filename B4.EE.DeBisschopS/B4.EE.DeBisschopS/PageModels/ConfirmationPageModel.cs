@@ -127,7 +127,7 @@ namespace B4.EE.DeBisschopS.PageModels
             foreach (Item item in OrderedItems)
             {
                 count += item.Count;
-                cost += item.Cost;
+                cost += item.Cost * item.Count;
             }
 
             ItemCount = count;

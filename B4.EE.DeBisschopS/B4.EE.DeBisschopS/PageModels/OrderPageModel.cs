@@ -51,7 +51,7 @@ namespace B4.EE.DeBisschopS.PageModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ItemCount)));
             }
         }
-        
+
         public MemoryService ms;
         public OrderPageModel(INavigation navigation, ObservableCollection<Item> InitialItems)
         {
@@ -89,7 +89,7 @@ namespace B4.EE.DeBisschopS.PageModels
         public ICommand GoToConfirmationPage => new Command(
             () =>
             {
-                ObservableCollection<Item> OrderedItems = ItemList;
+                ObservableCollection<Item> OrderedItems = new ObservableCollection<Item>(ItemList);
 
                 for (int i = ItemList.Count - 1; i >= 0; i--)
                 {
@@ -99,7 +99,11 @@ namespace B4.EE.DeBisschopS.PageModels
                     }
                 }
 
-                navigation.PushAsync(new ConfirmationPage(OrderedItems));
+                if (OrderedItems.Count > 0)
+                    navigation.PushAsync(new ConfirmationPage(OrderedItems));
+                else
+                    Application.Current.MainPage.DisplayAlert("Error", "There are no orders", "OK");
+
             });
 
         public ICommand RaiseItem => new Command(

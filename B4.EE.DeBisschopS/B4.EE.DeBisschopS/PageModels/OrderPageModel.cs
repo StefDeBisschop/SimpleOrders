@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -110,11 +111,9 @@ namespace B4.EE.DeBisschopS.PageModels
             (obj) =>
             {
                 Item item = (Item)obj;
-                ObservableCollection<Item> listCopy = new ObservableCollection<Item>(ItemList);
                 try
                 {
-                    listCopy.FirstOrDefault(_item => _item.Id == item.Id).Count++;
-                    ItemList = listCopy;
+                    ItemList.FirstOrDefault(_item => _item.Id == item.Id).Count++;
                     ChangeItemCount(true);
                 }
                 catch { }
@@ -127,15 +126,11 @@ namespace B4.EE.DeBisschopS.PageModels
                 ObservableCollection<Item> listCopy = new ObservableCollection<Item>(ItemList);
                 try
                 {
-                    Item itemFound = listCopy.FirstOrDefault(_item => _item.Id == item.Id);
-                    if (itemFound.Count > 0)
-                    {
-                        itemFound.Count--;
-                        ItemList = listCopy;
-                        ChangeItemCount(false);
-                    }
+                    ItemList.FirstOrDefault(_item => _item.Id == item.Id).Count--;
+                    ChangeItemCount(true);
                 }
                 catch { }
             });
+        
     }
 }

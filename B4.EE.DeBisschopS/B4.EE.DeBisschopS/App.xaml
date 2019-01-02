@@ -52,6 +52,11 @@
             <Style x:Key="ItemImageSmall" TargetType="Image">
                 <Setter Property="HeightRequest" Value="60" />
             </Style>
+
+            <!--Error label-->
+            <Style x:Key="ErrorLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Red" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

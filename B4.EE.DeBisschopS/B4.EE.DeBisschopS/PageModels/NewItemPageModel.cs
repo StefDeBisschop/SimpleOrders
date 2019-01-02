@@ -60,6 +60,21 @@ namespace B4.EE.DeBisschopS.PageModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(cost)));
             }
         }
+        private string _validationMessage;
+        public string validationMessage
+        {
+            get
+            {
+                return _validationMessage;
+            }
+
+            set
+            {
+                _validationMessage = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(validationMessage)));
+            }
+        }
+
         public NewItemPageModel(INavigation navigation)
         {
             ms = new MemoryService();
@@ -69,9 +84,24 @@ namespace B4.EE.DeBisschopS.PageModels
         public ICommand AddItem => new Command(
             async () =>
             {
-                await ms.AddNewItem(name, cost, imageClicked);
-                await navigation.PopAsync();
+                if (Validate())
+                {
+                    await ms.AddNewItem(name, cost, imageClicked);
+                    await navigation.PopAsync();
+                }
+                else
+                    validationMessage = "Not all field were given";
             });
+
+        public bool Validate()
+        {
+            if (cost != 0 && name != null && imageClicked != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
     }
 }

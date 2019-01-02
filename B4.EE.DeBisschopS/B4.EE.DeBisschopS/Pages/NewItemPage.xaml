@@ -25,6 +25,7 @@
             </ListView>
             <StackLayout Orientation="Horizontal" VerticalOptions="End">
                 <Button Style="{StaticResource StandardButton}" Command="{Binding AddItem}" Text="Save"></Button>
+                <Label Style="{StaticResource ErrorLabel}" Text="{Binding validationMessage}"></Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

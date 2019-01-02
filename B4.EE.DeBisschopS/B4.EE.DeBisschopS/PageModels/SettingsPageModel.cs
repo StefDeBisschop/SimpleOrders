@@ -40,7 +40,7 @@ namespace B4.EE.DeBisschopS.PageModels
         public async void InitializeAsync()
         {
             ms = new MemoryService();
-            Settings allSettings = await ms.GetCurrency();
+            Settings allSettings = await ms.GetSettings();
             currencySetting = allSettings.currency;
         }
 

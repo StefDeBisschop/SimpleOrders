@@ -88,6 +88,7 @@ namespace B4.EE.DeBisschopS.PageModels
                 {
                     await ms.AddNewItem(name, cost, imageClicked);
                     await navigation.PopAsync();
+                    DependencyService.Get<Toast>().ShowToast($"{name} created!");
                 }
                 else
                     validationMessage = "Not all field were given";

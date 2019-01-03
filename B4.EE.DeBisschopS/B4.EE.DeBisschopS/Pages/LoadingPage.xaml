@@ -4,7 +4,13 @@
              x:Class="B4.EE.DeBisschopS.Pages.LoadingPage">
     <ContentPage.Content>
         <StackLayout>
-            <ActivityIndicator Color="Red" IsRunning="true" VerticalOptions="CenterAndExpand" />
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Image Source="Icon_w_name.png"></Image>
+                <ActivityIndicator Color="Red" IsRunning="true"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <Label Style="{StaticResource LoadingInfoLabel}" Text="Made by Stef De Bisschop"></Label>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

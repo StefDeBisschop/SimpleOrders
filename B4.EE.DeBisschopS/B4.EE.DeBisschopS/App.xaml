@@ -60,6 +60,13 @@
                 <Setter Property="TextColor" Value="Red" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
+
+            <!--LoadingInfo label-->
+            <Style x:Key="LoadingInfoLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="LightSlateGray" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="10" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

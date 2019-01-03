@@ -158,6 +158,8 @@
     <Content Include="honey.png" />
     <Content Include="hotdog.png" />
     <Content Include="ice_cupcake.png" />
+    <Content Include="Icon.png" />
+    <Content Include="Icon_w_name.png" />
     <Content Include="lemon.png" />
     <Content Include="macaron_cookies.png" />
     <Content Include="milk.png" />

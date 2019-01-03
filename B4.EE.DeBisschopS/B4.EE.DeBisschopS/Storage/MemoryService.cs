@@ -78,7 +78,7 @@ namespace B4.EE.DeBisschopS.Storage
 
         // Methods for ItemList
 
-        public async Task<Item> AddNewItem(string name, int cost, string imageNameF)
+        public async Task<Item> AddNewItem(string name, float cost, string imageNameF)
         {
             Item newItem = new Item() { Name = name, Cost = cost, ImageNameF = imageNameF };
             ObservableCollection<Item> allItems = await GetAllItems();

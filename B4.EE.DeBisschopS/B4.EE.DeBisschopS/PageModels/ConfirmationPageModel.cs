@@ -64,8 +64,8 @@ namespace B4.EE.DeBisschopS.PageModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ItemCount)));
             }
         }
-        private int _FullCost;
-        public int FullCost
+        private float _FullCost;
+        public float FullCost
         {
             get
             {
@@ -123,7 +123,7 @@ namespace B4.EE.DeBisschopS.PageModels
         public void calculateTotals()
         {
             int count = 0;
-            int cost = 0;
+            float cost = 0;
             foreach (Item item in OrderedItems)
             {
                 count += item.Count;

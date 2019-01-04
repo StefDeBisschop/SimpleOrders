@@ -46,8 +46,8 @@ namespace B4.EE.DeBisschopS.PageModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(imageClicked)));
             }
         }
-        private decimal _cost;
-        public decimal cost
+        private string _cost;
+        public string cost
         {
             get
             {
@@ -86,7 +86,7 @@ namespace B4.EE.DeBisschopS.PageModels
             {
                 if (Validate())
                 {
-                    await ms.AddNewItem(name, cost, imageClicked);
+                    await ms.AddNewItem(name, getCostInDecimal(), imageClicked);
                     await navigation.PopAsync();
                     DependencyService.Get<Toast>().ShowToast($"{name} created!");
                 }
@@ -96,12 +96,17 @@ namespace B4.EE.DeBisschopS.PageModels
 
         public bool Validate()
         {
-            if (cost != 0 && name != null && imageClicked != null)
+            if (getCostInDecimal() != 0 && name != null && imageClicked != null)
             {
                 return true;
             }
 
             return false;
+        }
+
+        public decimal getCostInDecimal()
+        {
+            return Convert.ToDecimal(cost);
         }
 
     }

@@ -64,8 +64,8 @@ namespace B4.EE.DeBisschopS.PageModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ItemCount)));
             }
         }
-        private float _FullCost;
-        public float FullCost
+        private string _FullCost;
+        public string FullCost
         {
             get
             {
@@ -123,7 +123,7 @@ namespace B4.EE.DeBisschopS.PageModels
         public void calculateTotals()
         {
             int count = 0;
-            float cost = 0;
+            decimal cost = 0;
             foreach (Item item in OrderedItems)
             {
                 count += item.Count;
@@ -131,7 +131,7 @@ namespace B4.EE.DeBisschopS.PageModels
             }
 
             ItemCount = count;
-            FullCost = cost;
+            FullCost = cost.ToString("G29");
         }
 
         public ICommand ChangeColor => new Command(

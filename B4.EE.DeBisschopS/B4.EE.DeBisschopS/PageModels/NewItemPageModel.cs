@@ -46,8 +46,8 @@ namespace B4.EE.DeBisschopS.PageModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(imageClicked)));
             }
         }
-        private float _cost;
-        public float cost
+        private decimal _cost;
+        public decimal cost
         {
             get
             {

@@ -10,7 +10,7 @@ namespace B4.EE.DeBisschopS.Models
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; }
-        public float Cost { get; set; }
+        public decimal Cost { get; set; }
         
         private int _Count;
         public int Count

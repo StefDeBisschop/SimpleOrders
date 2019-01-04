@@ -106,6 +106,11 @@ namespace B4.EE.DeBisschopS.PageModels
 
         public decimal getCostInDecimal()
         {
+            if (cost.Contains(","))
+            {
+                string convertedCost = cost.Replace(",", ".");
+                return Convert.ToDecimal(convertedCost);
+            }
             return Convert.ToDecimal(cost);
         }
 

@@ -23,7 +23,6 @@ namespace B4.EE.DeBisschopS.PageModels
         public event PropertyChangedEventHandler PropertyChanged;
         private ObservableCollection<Item> _ItemList;
         private INavigation navigation;
-        public ObservableCollection<Item> TestData;
         public ObservableCollection<Item> ItemList
         {
             get
@@ -35,6 +34,21 @@ namespace B4.EE.DeBisschopS.PageModels
             {
                 _ItemList = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ItemList)));
+            }
+        }
+
+        private bool _IsEmpty;
+        public bool IsEmpty
+        {
+            get
+            {
+                return _IsEmpty;
+            }
+
+            set
+            {
+                _IsEmpty = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsEmpty)));
             }
         }
 
@@ -57,8 +71,8 @@ namespace B4.EE.DeBisschopS.PageModels
         public OrderPageModel(INavigation navigation, ObservableCollection<Item> InitialItems)
         {
             this.navigation = navigation;
-            //InitializeAsync();
             ItemList = InitialItems;
+            checkList();
         }
 
         public OrderPageModel(INavigation navigation)
@@ -71,6 +85,15 @@ namespace B4.EE.DeBisschopS.PageModels
         {
             ms = new MemoryService();
             ItemList = await ms.GetAllItems();
+            checkList();
+        }
+
+        public void checkList()
+        {
+            if (ItemList.Count <= 0)
+                IsEmpty = true;
+            else
+                IsEmpty = false;
         }
 
         public void ChangeItemCount(bool countUp)

@@ -4,7 +4,6 @@ using B4.EE.DeBisschopS.Models;
 using B4.EE.DeBisschopS.PageModels;
 using B4.EE.DeBisschopS.Pages;
 using B4.EE.DeBisschopS.Storage;
-using FreshMvvm;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

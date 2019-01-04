@@ -13,6 +13,7 @@ using B4.EE.DeBisschopS.Models;
 using B4.EE.DeBisschopS.Pages;
 using B4.EE.DeBisschopS.Storage;
 using Newtonsoft.Json;
+using Plugin.LocalNotifications;
 using Xamarin.Forms;
 using Constants = B4.EE.DeBisschopS.Storage.Constants;
 
@@ -124,7 +125,11 @@ namespace B4.EE.DeBisschopS.PageModels
                 }
 
                 if (OrderedItems.Count > 0)
+                {
                     navigation.PushAsync(new ConfirmationPage(OrderedItems));
+
+                    CrossLocalNotifications.Current.Show("Simple Orders", "You are taking an order", 0);
+                }
                 else
                     Application.Current.MainPage.DisplayAlert("Error", "There are no orders", "OK");
 

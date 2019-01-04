@@ -9,6 +9,7 @@ using System.Windows.Input;
 using B4.EE.DeBisschopS.Models;
 using B4.EE.DeBisschopS.Pages;
 using B4.EE.DeBisschopS.Storage;
+using Plugin.LocalNotifications;
 using Xamarin.Forms;
 
 namespace B4.EE.DeBisschopS.PageModels
@@ -35,7 +36,7 @@ namespace B4.EE.DeBisschopS.PageModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrencySetting)));
             }
         }
-        
+
 
         public ObservableCollection<Item> OrderedItems
         {
@@ -156,10 +157,13 @@ namespace B4.EE.DeBisschopS.PageModels
             });
 
         public ICommand GoToFinishedOrderPage => new Command(
-            () =>
+            async () =>
             {
-                if(isChecked && isInHands)
-                    navigation.PushAsync(new FinishedOrderPage());
+                if (isChecked && isInHands)
+                {
+                    await navigation.PushAsync(new FinishedOrderPage());
+                    CrossLocalNotifications.Current.Cancel(0);
+                }
             });
     }
 }

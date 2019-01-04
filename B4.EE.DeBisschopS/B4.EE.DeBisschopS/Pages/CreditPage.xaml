@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="B4.EE.DeBisschopS.Pages.CreditPage"
+             Title="Credits">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="Icon_w_name.png" HeightRequest="90"></Image>
+            <Label Style="{StaticResource CreditHeaderLabel}" Text="About"></Label>
+            <Label Style="{StaticResource CreditsLabel}" Text="This app is made by Stef De Bisschop for a school project"></Label>
+
+            <Label Style="{StaticResource CreditHeaderLabel}" Text="Images"></Label>
+            <Label Style="{StaticResource CreditsLabel}" Text="We use images from 2 resources:"></Label>
+
+            <Label Style="{StaticResource CreditsLabel}" Text="The InVision Tasty food icon pack"></Label>
+            <Label Style="{StaticResource CreditsLabel}" Text="Food and Drinks Icons in Color from icons8"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

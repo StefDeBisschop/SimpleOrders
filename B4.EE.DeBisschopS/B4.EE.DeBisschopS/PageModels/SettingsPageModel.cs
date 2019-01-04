@@ -50,6 +50,12 @@ namespace B4.EE.DeBisschopS.PageModels
                 navigation.PushAsync(new NewItemPage());
             });
 
+        public ICommand GoToCreditsPage => new Command(
+            () =>
+            {
+                navigation.PushAsync(new CreditPage());
+            });
+
         public async Task ChangeCurrency(string currencyName)
         {
             ms = new MemoryService();

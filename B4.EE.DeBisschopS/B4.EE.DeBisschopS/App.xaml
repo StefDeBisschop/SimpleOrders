@@ -67,6 +67,19 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="FontSize" Value="10" />
             </Style>
+
+            <!--CreditHeader label-->
+            <Style x:Key="CreditHeaderLabel" TargetType="Label">
+                <Setter Property="Margin" Value="0,20,0,0" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+
+            <!--Credits label-->
+            <Style x:Key="CreditsLabel" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -11,7 +11,7 @@
         <StackLayout>
             <StackLayout VerticalOptions="FillAndExpand">
                 <Label IsVisible="{Binding IsEmpty}" Style="{StaticResource CreditHeaderLabel}" Text="No items here, you can add them in the settings tab!"></Label>
-                <ListView ItemsSource="{Binding ItemList}" HasUnevenRows="True" >
+                <ListView ItemsSource="{Binding ItemList}" HasUnevenRows="True" ItemSelected="DisableSelectedItem" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

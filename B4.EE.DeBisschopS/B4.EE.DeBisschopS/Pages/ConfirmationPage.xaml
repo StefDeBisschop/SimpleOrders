@@ -35,16 +35,16 @@
                     <Button x:Name="btnInHands" Style="{StaticResource StandardButton}" Text="In Hands" BackgroundColor="{Binding bgColorInHands}" Command="{Binding ChangeColor}" CommandParameter="{x:Reference btnInHands}"></Button>
 
                     <StackLayout BackgroundColor="LightGray" Orientation="Horizontal">
-                        <Label FontSize="40" TextColor="DarkOrange" Text="Total" FontAttributes="Bold"></Label>
+                        <Label FontSize="40" TextColor="DarkOrange" Text="Total" FontAttributes="Bold" HorizontalOptions="StartAndExpand"></Label>
                         <Label FontSize="40" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding FullCost}"/>
-                                    <Span Text="{Binding CurrencySetting}" />
+                                    <!--<Span Text="{Binding CurrencySetting}" />-->
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Label FontSize="40" HorizontalTextAlignment="End" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
+                        <Label FontSize="40" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" Text="{Binding ItemCount}" FontAttributes="Bold"></Label>
                     </StackLayout>
 
                     <Button Style="{StaticResource StandardButton}" Text="Payed" Command="{Binding GoToFinishedOrderPage}"></Button>

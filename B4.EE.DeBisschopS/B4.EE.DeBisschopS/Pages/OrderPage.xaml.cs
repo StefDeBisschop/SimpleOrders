@@ -38,5 +38,11 @@ namespace B4.EE.DeBisschopS.Pages
             this.BindingContext = newPageModel;
             base.OnAppearing();
         }
+
+        private void DisableSelectedItem(object sender, SelectedItemChangedEventArgs e)
+        {
+            var list = (ListView)sender;
+            list.SelectedItem = null;
+        }
     }
 }

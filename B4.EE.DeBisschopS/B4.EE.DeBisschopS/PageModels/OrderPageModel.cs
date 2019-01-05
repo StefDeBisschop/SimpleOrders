@@ -23,6 +23,7 @@ namespace B4.EE.DeBisschopS.PageModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private ObservableCollection<Item> _ItemList;
+        private bool areNotificationsEnabled;
         private INavigation navigation;
         public ObservableCollection<Item> ItemList
         {
@@ -74,12 +75,14 @@ namespace B4.EE.DeBisschopS.PageModels
             this.navigation = navigation;
             ItemList = InitialItems;
             checkList();
+            setNotifications();
         }
 
         public OrderPageModel(INavigation navigation)
         {
             this.navigation = navigation;
             InitializeAsync();
+            setNotifications();
         }
 
         public async void InitializeAsync()
@@ -87,6 +90,13 @@ namespace B4.EE.DeBisschopS.PageModels
             ms = new MemoryService();
             ItemList = await ms.GetAllItems();
             checkList();
+        }
+
+        public async void setNotifications()
+        {
+            ms = new MemoryService();
+            Settings allSettings = await ms.GetSettings();
+            areNotificationsEnabled = allSettings.areNotificationsEnabled;
         }
 
         public void checkList()
@@ -127,8 +137,8 @@ namespace B4.EE.DeBisschopS.PageModels
                 if (OrderedItems.Count > 0)
                 {
                     navigation.PushAsync(new ConfirmationPage(OrderedItems));
-
-                    CrossLocalNotifications.Current.Show("Simple Orders", "You are taking an order", 0);
+                    if (areNotificationsEnabled)
+                        CrossLocalNotifications.Current.Show("Simple Orders", "You are taking an order", 0);
                 }
                 else
                     Application.Current.MainPage.DisplayAlert("Error", "There are no orders", "OK");

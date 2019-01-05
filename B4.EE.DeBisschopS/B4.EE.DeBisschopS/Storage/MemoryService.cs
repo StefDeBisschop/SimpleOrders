@@ -101,19 +101,30 @@ namespace B4.EE.DeBisschopS.Storage
 
         public async Task<Settings> ChangeCurrency(string currencyName)
         {
-            Settings settings = new Settings()
-            {
-                currency = currencyName
-            };
-            string newJson = JsonConvert.SerializeObject(settings);
+            Settings allSettings = await GetSettings();
+            allSettings.currency = currencyName;
+            string newJson = JsonConvert.SerializeObject(allSettings);
             await WriteTextAllAsync(Constants.SETTINGS_FILENAME, newJson);
-            return settings;
+            return allSettings;
         }
 
         public async Task<Settings> GetSettings()
         {
             string readedText = await ReadAllTextAsync(Constants.SETTINGS_FILENAME);
+
+            if (readedText == "")
+                return new Settings();
+
             return JsonConvert.DeserializeObject<Settings>(readedText);
+        }
+
+        public async Task<Settings> ChangeNotificationsEnabled(bool areNotificationsEnabled)
+        {
+            Settings allSettings = await GetSettings();
+            allSettings.areNotificationsEnabled = areNotificationsEnabled;
+            string newJson = JsonConvert.SerializeObject(allSettings);
+            await WriteTextAllAsync(Constants.SETTINGS_FILENAME, newJson);
+            return allSettings;
         }
     }
 }

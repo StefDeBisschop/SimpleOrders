@@ -32,16 +32,34 @@ namespace B4.EE.DeBisschopS.PageModels
             }
         }
 
+        private bool _areNotificationsEnabled;
+        public bool areNotificationsEnabled
+        {
+            get
+            {
+                return _areNotificationsEnabled;
+            }
+
+            set
+            {
+                _areNotificationsEnabled = value;
+                ChangeToggleNotifications(value);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(areNotificationsEnabled)));
+            }
+        }
+
         public SettingsPageModel(INavigation navigation)
         {
             this.navigation = navigation;
+            InitializeAsync();
         }
 
         public async void InitializeAsync()
         {
             ms = new MemoryService();
             Settings allSettings = await ms.GetSettings();
-            currencySetting = allSettings.currency;
+            //currencySetting = allSettings.currency;
+            areNotificationsEnabled = allSettings.areNotificationsEnabled;
         }
 
         public ICommand GoToNewItemPage => new Command(
@@ -60,6 +78,12 @@ namespace B4.EE.DeBisschopS.PageModels
         {
             ms = new MemoryService();
             await ms.ChangeCurrency(currencySetting);
+        }
+
+        public async Task ChangeToggleNotifications(bool areNotificationsEnabled)
+        {
+            ms = new MemoryService();
+            await ms.ChangeNotificationsEnabled(areNotificationsEnabled);
         }
     }
 }

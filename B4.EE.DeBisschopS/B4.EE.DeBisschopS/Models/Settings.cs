@@ -7,5 +7,6 @@ namespace B4.EE.DeBisschopS.Models
     public class Settings
     {
         public string currency { get; set; }
+        public bool areNotificationsEnabled { get; set; } = true;
     }
 }
